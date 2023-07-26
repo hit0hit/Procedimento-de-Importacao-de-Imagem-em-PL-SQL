@@ -1,0 +1,21 @@
+DECLARE
+lp NUMBER := 0;
+begin
+delete from IMG_COLABORADOR where COLABORADOR_ID = :P64_COLABORADOR_ID;
+FOR lp IN (SELECT * FROM APEX_APPLICATION_TEMP_FILES)
+LOOP
+    INSERT INTO IMG_COLABORADOR(
+        FILENAME,
+        CONTENT,
+        MIMETYPE,
+        LAST_UPDATE,
+        COLABORADOR_ID
+    ) VALUES (
+        lp.FILENAME,
+        lp.BLOB_CONTENT,
+        lp.MIME_TYPE,
+        lp.CREATED_ON,
+        :P64_COLABORADOR_ID
+    );
+END LOOP;
+end;
