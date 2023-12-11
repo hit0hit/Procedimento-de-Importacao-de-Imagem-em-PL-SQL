@@ -53,6 +53,29 @@ Para testar o procedimento, você pode seguir estas etapas:
 - Antes de executar este bloco PL/SQL, certifique-se de que os dados na tabela temporária APEX_APPLICATION_TEMP_FILES estão corretos e contêm as informações necessárias para a inserção na tabela IMG_COLABORADOR.
 - O bloco DELETE garante que registros antigos associados ao mesmo COLABORADOR_ID sejam removidos antes da inserção de novos dados.
 
+
+
+# Atualização de Dados na Tabela CELL_EMPRESA
+
+Este bloco SQL é responsável por atualizar os dados na tabela `CELL_EMPRESA` com informações provenientes da tabela temporária `APEX_APPLICATION_TEMP_FILES`.
+
+## Instrução SQL
+
+```sql
+UPDATE CELL_EMPRESA
+SET 
+   FILENAME = (SELECT FILENAME FROM APEX_APPLICATION_TEMP_FILES),
+   CONTENT = (SELECT BLOB_CONTENT FROM APEX_APPLICATION_TEMP_FILES),
+   MIMETYPE = (SELECT MIME_TYPE FROM APEX_APPLICATION_TEMP_FILES),
+   LAST_UPDATE = (SELECT CREATED_ON FROM APEX_APPLICATION_TEMP_FILES)
+WHERE ID_EMPRESA = :GLOBAL_FK_EMPRESA;
 ```
 
-Certifique-se de substituir `:P64_COLABORADOR_ID` com os valores reais necessários para o seu ambiente. Este README.md fornece informações sobre o procedimento, como usá-lo e um exemplo de teste para verificar sua funcionalidade.
+## Uso
+
+Esta instrução SQL é utilizada para atualizar os campos `FILENAME`, `CONTENT`, `MIMETYPE` e `LAST_UPDATE` na tabela `CELL_EMPRESA` com os dados correspondentes da tabela temporária `APEX_APPLICATION_TEMP_FILES`. Certifique-se de fornecer o valor apropriado para o parâmetro `:GLOBAL_FK_EMPRESA` antes de executar esta instrução SQL.
+
+## Observações
+
+- Antes de executar esta instrução SQL, certifique-se de que os dados na tabela temporária `APEX_APPLICATION_TEMP_FILES` estão corretos e contêm as informações necessárias para a atualização na tabela `CELL_EMPRESA`.
+
