@@ -53,14 +53,14 @@ Para testar o procedimento, você pode seguir estas etapas:
 
 
 
-# Atualização de Dados na Tabela CELL_EMPRESA
+# Atualização de Dados na Tabela EMPRESA
 
-Este bloco SQL é responsável por atualizar os dados na tabela `CELL_EMPRESA` com informações provenientes da tabela temporária `APEX_APPLICATION_TEMP_FILES`.
+Este bloco SQL é responsável por atualizar os dados na tabela `EMPRESA` com informações provenientes da tabela temporária `APEX_APPLICATION_TEMP_FILES`.
 
 ## Instrução SQL
 
 ```sql
-UPDATE CELL_EMPRESA
+UPDATE EMPRESA
 SET 
    FILENAME = (SELECT FILENAME FROM APEX_APPLICATION_TEMP_FILES),
    CONTENT = (SELECT BLOB_CONTENT FROM APEX_APPLICATION_TEMP_FILES),
@@ -71,9 +71,9 @@ WHERE ID_EMPRESA = :GLOBAL_FK_EMPRESA;
 
 ## Uso
 
-Esta instrução SQL é utilizada para atualizar os campos `FILENAME`, `CONTENT`, `MIMETYPE` e `LAST_UPDATE` na tabela `CELL_EMPRESA` com os dados correspondentes da tabela temporária `APEX_APPLICATION_TEMP_FILES`. Certifique-se de fornecer o valor apropriado para o parâmetro `:GLOBAL_FK_EMPRESA` antes de executar esta instrução SQL.
+Esta instrução SQL é utilizada para atualizar os campos `FILENAME`, `CONTENT`, `MIMETYPE` e `LAST_UPDATE` na tabela `EMPRESA` com os dados correspondentes da tabela temporária `APEX_APPLICATION_TEMP_FILES`. Certifique-se de fornecer o valor apropriado para o parâmetro `:GLOBAL_FK_EMPRESA` antes de executar esta instrução SQL.
 
 ## Observações
 
-- Antes de executar esta instrução SQL, certifique-se de que os dados na tabela temporária `APEX_APPLICATION_TEMP_FILES` estão corretos e contêm as informações necessárias para a atualização na tabela `CELL_EMPRESA`.
+- Antes de executar esta instrução SQL, certifique-se de que os dados na tabela temporária `APEX_APPLICATION_TEMP_FILES` estão corretos e contêm as informações necessárias para a atualização na tabela `EMPRESA`.
 
