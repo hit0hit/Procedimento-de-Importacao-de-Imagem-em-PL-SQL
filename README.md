@@ -1,5 +1,5 @@
 
-# Procedimento de Importação de Imagem para Colaborador
+# Procedimento de Importação de Imagem
 
 Este procedimento PL/SQL é responsável por excluir registros existentes na tabela IMG_COLABORADOR para um determinado COLABORADOR_ID e inserir novos registros com base nos dados da tabela temporária APEX_APPLICATION_TEMP_FILES.
 
